@@ -1,0 +1,77 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.au10tix.sampleapp.nfc'
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.au10tix.sampleapp.nfc"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+ext {
+    au10Version = '2.8.0'
+    ext.camera_view_version = '1.1.0-beta03'
+    ext.camerax_version = '1.1.0-beta03'
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:2.4.2"
+    implementation "androidx.navigation:navigation-ui-ktx:2.4.2"
+
+    // Required modules dependencies for this sample (passport and PFL)
+    implementation "com.au10tix.sdk:passive-face-liveness:$au10Version"
+    implementation "com.au10tix.sdk:backend:$au10Version"
+    implementation(name:'Passport-release-2.8.0', ext:'aar')
+
+    // Core required dependencies
+    implementation "androidx.camera:camera-view:$camera_view_version"
+    implementation "androidx.camera:camera-camera2:$camerax_version"
+    implementation "androidx.camera:camera-lifecycle:$camerax_version"
+
+    //Mandatory for SDK with UI components
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    // Passport required dependencies
+    implementation 'org.jmrtd:jmrtd:0.7.18'
+    implementation 'net.sf.scuba:scuba-sc-android:0.0.20'
+    implementation 'com.madgag.spongycastle:prov:1.54.0.0'
+    implementation 'com.google.android.gms:play-services-mlkit-text-recognition:18.0.0'
+
+    // PFL required dependencies
+    implementation 'com.google.android.gms:play-services-mlkit-face-detection:17.0.1'
+
+}

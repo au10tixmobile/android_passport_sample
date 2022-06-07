@@ -1,0 +1,27 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url 'https://maven.pkg.github.com/au10tixmobile/android_artifacts'
+            credentials {
+                username ""
+                password "***CONTACT_SUPPORT_FOR_PASSWORD***"
+            }
+        }
+        flatDir {
+            dirs 'libs'
+        }
+        mavenLocal()
+    }
+}
+rootProject.name = "NFC Sample"
+include ':app'
